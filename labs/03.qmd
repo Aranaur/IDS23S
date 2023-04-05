@@ -1,0 +1,12 @@
+---
+title: "Завдання №3"
+subtitle: "Data Science"
+language: _language-ukr.yml
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+- Якщо Ви ще **не почали виконувати лабораторну №2**: виконати її з використанням `Quarto` та сформувати звіт.
+
+- Якщо Ви **вже зробили лабораторну №2**: перенести її у `Quarto` та сформувати звіт.
