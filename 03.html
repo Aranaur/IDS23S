@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ihor Miroshnychenko">
+<meta name="dcterms.date" content="2023-04-05">
+
+<title>Quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="03_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03_files/libs/quarto-html/quarto.js"></script>
+<script src="03_files/libs/quarto-html/popper.min.js"></script>
+<script src="03_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="03_files/libs/quarto-diagram/mermaid.min.js"></script>
+<script src="03_files/libs/quarto-diagram/mermaid-init.js"></script>
+<link href="03_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+<script src="03_files/libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<link href="03_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="03_files/libs/datatables-binding-0.26/datatables.js"></script>
+<script src="03_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="03_files/libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="03_files/libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="03_files/libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="03_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="03_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Зміст</h2>
+   
+  <ul class="collapse">
+  <li><a href="#основи-markdown" id="toc-основи-markdown" class="nav-link active" data-scroll-target="#основи-markdown">Основи <code>Markdown</code></a>
+  <ul class="collapse">
+  <li><a href="#робота-з-текстом" id="toc-робота-з-текстом" class="nav-link" data-scroll-target="#робота-з-текстом">Робота з текстом</a></li>
+  <li><a href="#посилання" id="toc-посилання" class="nav-link" data-scroll-target="#посилання">Посилання</a></li>
+  <li><a href="#списки" id="toc-списки" class="nav-link" data-scroll-target="#списки">Списки</a></li>
+  <li><a href="#таблиці" id="toc-таблиці" class="nav-link" data-scroll-target="#таблиці">Таблиці</a></li>
+  <li><a href="#рівняння" id="toc-рівняння" class="nav-link" data-scroll-target="#рівняння">Рівняння</a></li>
+  </ul></li>
+  <li><a href="#діаграми" id="toc-діаграми" class="nav-link" data-scroll-target="#діаграми">Діаграми</a></li>
+  <li><a href="#зноски" id="toc-зноски" class="nav-link" data-scroll-target="#зноски">Зноски</a></li>
+  <li><a href="#робота-з-кодом" id="toc-робота-з-кодом" class="nav-link" data-scroll-target="#робота-з-кодом">Робота з кодом</a>
+  <ul class="collapse">
+  <li><a href="#вбудований-код" id="toc-вбудований-код" class="nav-link" data-scroll-target="#вбудований-код">Вбудований код</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Quarto</h1>
+<p class="subtitle lead">Intro Data Science</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Автор</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ihor Miroshnychenko </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Дата публікації</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 5, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="основи-markdown" class="level1">
+<h1>Основи <code>Markdown</code></h1>
+<section id="робота-з-текстом" class="level2">
+<h2 class="anchored" data-anchor-id="робота-з-текстом">Робота з текстом</h2>
+<p>Всім привіт!</p>
+<p><em>Я</em> <strong>дуже люблю</strong> <code>R</code>!</p>
+<p><code>mutate()</code></p>
+<p>word<sup>upper</sup></p>
+<p>word<sub>lower</sub></p>
+<p><del>закреслення</del></p>
+</section>
+<section id="посилання" class="level2">
+<h2 class="anchored" data-anchor-id="посилання">Посилання</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/quarto.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Quarto</figcaption><p></p>
+</figure>
+</div>
+<p><a href="https://quarto.org/">Quarto</a></p>
+</section>
+<section id="списки" class="level2">
+<h2 class="anchored" data-anchor-id="списки">Списки</h2>
+<ul>
+<li>запис 1
+<ul>
+<li>підпункт 1</li>
+<li>підпункт 2</li>
+</ul></li>
+<li>запис 2</li>
+<li>запис 3
+<ul>
+<li>підпункт 3</li>
+</ul></li>
+<li>запис 4</li>
+</ul>
+<ol type="1">
+<li>Перший
+<ol type="a">
+<li>підпункт</li>
+<li>підпункт
+<ol type="a">
+<li>підпункт</li>
+</ol></li>
+</ol></li>
+<li>Другий</li>
+<li>Перший</li>
+<li>Другий</li>
+<li>Перший</li>
+<li>Другий</li>
+<li>Перший</li>
+<li>Другий</li>
+</ol>
+<ol class="example" type="1">
+<li>Перший</li>
+</ol>
+<p>текст, який розриває пункти</p>
+<ol start="2" class="example" type="1">
+<li>Другий</li>
+</ol>
+</section>
+<section id="таблиці" class="level2">
+<h2 class="anchored" data-anchor-id="таблиці">Таблиці</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Справа</th>
+<th style="text-align: left;">Зліва</th>
+<th>За замовчуванням</th>
+<th style="text-align: center;">По центру</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">12</td>
+<td>12</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">123</td>
+<td style="text-align: left;">123</td>
+<td>123</td>
+<td style="text-align: center;">123</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1</td>
+<td>1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Var 1</th>
+<th>Var 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>123</td>
+<td>321</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Змінна 1</strong></th>
+<th style="text-align: center;"><strong>Змінна 2</strong></th>
+<th style="text-align: center;"><strong>Змінна 3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">2</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="рівняння" class="level2">
+<h2 class="anchored" data-anchor-id="рівняння">Рівняння</h2>
+<p>Рівняння в середині тексту <span class="math inline">\(V = \frac{mc^2}{\sqrt{x_1 \times x_2}}\)</span></p>
+<p>Рівняння окремо: <span class="math display">\[V = \frac{mc^2}{\sqrt{x_1 \times x_2}}\]</span></p>
+<p><span class="math inline">\(\sum_{n=1}^{t}e\times x_1\epsilon \rho \mathbb{P}\mathbb{N}\)</span></p>
+</section>
+</section>
+<section id="діаграми" class="level1">
+<h1>Діаграми</h1>
+<p><code>Ctrl+Alt+i</code></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
+  A[Квадратна форма] --&gt; B(Кругла форма)
+  B --&gt; C{Рішення}
+  C --&gt; D[Результат один]
+  C --&gt; E[Результат два]
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="зноски" class="level1">
+<h1>Зноски</h1>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Порада!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>note</code>, <code>tip</code>, <code>warning</code>, <code>caution</code> та <code>important</code></p>
+</div>
+</div>
+</section>
+<section id="робота-з-кодом" class="level1">
+<h1>Робота з кодом</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Розрахуємо середнє значення <code>mpg</code> з датасету <code>mtcars</code>:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.09062</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  DT<span class="sc">::</span><span class="fu">datatable</span>()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b4660c5708044e626c9c" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b4660c5708044e626c9c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[4,6,8],[26.6636363636364,19.7428571428571,15.1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cyl<\/th>\n      <th>avg_mpg<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="вбудований-код" class="level2">
+<h2 class="anchored" data-anchor-id="вбудований-код">Вбудований код</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>radius <span class="ot">&lt;-</span> <span class="fl">5.5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> pi <span class="sc">*</span> (radius <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>area</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 95.03318</code></pre>
+</div>
+</div>
+<p>Якщо радіус кола дорівнює 5.5, то площа кола буде 95.03.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Скопійовано!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Скопійовано!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

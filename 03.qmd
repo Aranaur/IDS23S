@@ -1,0 +1,160 @@
+---
+title: "Quarto"
+subtitle: "Intro Data Science"
+date: today
+author: "Ihor Miroshnychenko"
+format: html
+toc: true
+toc-depth: 2
+language: _language-ukr.yml
+---
+
+# Основи `Markdown`
+
+## Робота з текстом
+
+Всім привіт!
+
+*Я* **дуже люблю** `R`!
+
+`mutate()`
+
+word^upper^
+
+
+word~lower~
+
+~~закреслення~~
+
+## Посилання
+
+![Quarto](https://quarto.org/quarto.png)
+
+[Quarto](https://quarto.org/)
+
+## Списки
+
+* запис 1
+    + підпункт 1
+    + підпункт 2
+* запис 2
+- запис 3
+    + підпункт 3
+- запис 4
+
+
+1. Перший
+    a) підпункт
+    a) підпункт
+        a) підпункт
+1. Другий
+1. Перший
+1. Другий
+1. Перший
+1. Другий
+1. Перший
+1. Другий
+
+(@) Перший
+
+текст, який розриває пункти
+
+(@) Другий
+
+## Таблиці
+
+| Справа | Зліва | За замовчуванням | По центру |
+|------:|:-------|------------------|:---------:|
+|   12  |  12    |    12            |    12     |
+|  123  |  123   |   123            |   123     |
+|    1  |    1   |     1            |     1     |
+
+
+| Var 1 | Var 2 |
+|-------|-------|
+| 123   | 321   |
+
+| **Змінна 1** | **Змінна 2** | **Змінна 3** |
+|:------------:|:------------:|:------------:|
+|       1      |       5      |       7      |
+|       2      |       6      |       2      |
+
+## Рівняння
+
+Рівняння в середині тексту $V = \frac{mc^2}{\sqrt{x_1 \times x_2}}$
+
+Рівняння окремо: $$V = \frac{mc^2}{\sqrt{x_1 \times x_2}}$$
+
+$\sum_{n=1}^{t}e\times x_1\epsilon \rho \mathbb{P}\mathbb{N}$
+
+# Діаграми
+
+`Ctrl+Alt+i`
+
+```{mermaid}
+flowchart LR
+  A[Квадратна форма] --> B(Кругла форма)
+  B --> C{Рішення}
+  C --> D[Результат один]
+  C --> E[Результат два]
+```
+
+# Зноски
+
+::: {.callout-tip}
+`note`, `tip`, `warning`, `caution` та `important`
+:::
+
+# Робота з кодом
+
+```{r}
+head(mtcars)
+```
+
+```{r}
+#| eval: false
+
+mtcars[1:5, 1:5]
+```
+
+Розрахуємо середнє значення `mpg` з датасету `mtcars`:
+
+```{r}
+#| echo: false
+
+mean_mpg = mean(mtcars$mpg)
+mean_mpg
+```
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(avg_mpg = mean(mpg)) %>% 
+  DT::datatable()
+```
+
+## Вбудований код
+
+```{r}
+radius <- 5.5
+area <- pi * (radius ^ 2)
+area
+```
+
+Якщо радіус кола дорівнює `r radius`, то площа кола буде `r round(area, 2)`.
+
+
+
+
+
+
+
+
+
+
+
