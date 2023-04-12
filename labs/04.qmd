@@ -1,0 +1,22 @@
+---
+title: "Завдання №4"
+subtitle: "Data Science"
+language: _language-ukr.yml
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+- Побудуйте візуалізацію Ваших даних за допомогою пакету `ggplot2`:
+    - точкова діаграма
+    - бульбашкова діаграма
+    - стовпчаста діаграма
+    - box-plot
+    - графік щільності розподілу
+    - тощо...
+    
+- Прокоментуйте отримані результати
+
+::: {.callout-note}
+Звіт оформіть за допомогою Quarto
+:::
